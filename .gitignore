@@ -1,0 +1,3 @@
+secrets.toml
+/service-account
+streamlit-gsheet-service-account-key.json

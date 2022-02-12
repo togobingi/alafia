@@ -1,0 +1,7 @@
+gsheetsdb==0.1.13.1
+protobuf==3.19.4
+streamlit==1.4.0
+google-api-core==2.4.0
+google-auth==2.3.3
+google-cloud-bigquery==2.32.0
+google-cloud-core==2.2.1
