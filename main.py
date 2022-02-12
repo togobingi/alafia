@@ -29,14 +29,23 @@ tickers = run_query(f'SELECT * FROM "{sheet_url}"')
 
 st.title("Your Investment Portfolio")
 
-st.header('Your Position')
+st.header('Your Investment Overview')
 # Print results.
 for row in rows:
-    st.write("You invested: $",float(f"{row.Total_Invested}"))
-    st.write("You investment is currently worth: $",round(row.Current_Value,2), "(",round(row.total_return_perc,2),"%)")
+    initial_investment = "$"+str(round(row.Total_Invested,2))
+    current_investment_worth = "$"+str(round(row.Current_Value,2))
+    investment_growth = "$"+str(round((row.Current_Value)-(row.Total_Invested),2))
+
+    investment_growth_perc = str(round(row.total_return_perc,2))+"%"
+
+    st.metric(label="You invested", value=initial_investment)
+    st.metric(label="You investment is currently worth", value=current_investment_worth, delta=investment_growth_perc)
+
+    #st.write("You invested: $",float(f"{row.Total_Invested}"))
+    #st.write("You investment is currently worth: $",round(row.Current_Value,2), "(",round(row.total_return_perc,2),"%)")
    # st.write(f"{row.name} has a :{row.pet}:")
 
-st.header("Your Portfolio")
+st.header("Your Portfolio Breakdown")
 for ticker in tickers:
-    st.write("You invested $", round(ticker.Total_Spent,2), "in ",f"{ticker.Stock_Name}", " and it is currently worth ", round(ticker.Current_Net_Worth,2))
+    st.write("You invested $", round(ticker.Total_Spent,2), "in ",f"{ticker.Stock_Name}", " and it is currently worth $", round(ticker.Current_Net_Worth,2))
 
