@@ -1,2 +1,2 @@
 # alafia
-Welath manaegment app for the elderly
+Wealth management app for the elderly
